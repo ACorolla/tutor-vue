@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-bind:class</title>
+    <style type="text/css">
+        .active {
+            background: #ccc; 
+        }
+    </style>
+</head>
+<body>
+    <div class="app">
+        <div class="aaa" :class="{ active: isActive }">
+            <span> v-bind:class </span>
+        </div>
+        <button @click="triggerClass">切换样式</button>
+        <div :class="classObject">
+            <span> class也可以绑定对象 </span>
+        </div>
+    </div>
+    <script src="../vue.js"></script>
+    <script>
+        var vm = new Vue({
+          el: '.app',
+          data: {
+            isActive: true,
+          },
+          methods: {
+            triggerClass: function () {
+              this.isActive = !this.isActive;
+            }
+          },
+          computed: {
+            classObject:function () {
+              return {
+                active: this.isActive
+              }
+            }
+          }
+        })
+    </script>
+</body>
+</html>
